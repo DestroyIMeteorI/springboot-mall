@@ -1,5 +1,6 @@
 package com.meteor.springbootmall.rowmapper;
 
+import com.meteor.springbootmall.constant.ProductCategory;
 import com.meteor.springbootmall.model.Product;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -14,7 +15,10 @@ public class ProductRowMapper implements RowMapper<Product> {
 
         product.setProductId(resultSet.getInt("product_id"));
         product.setProductName(resultSet.getString("product_name"));
-        product.setCategory(resultSet.getString("category"));
+
+        // 將資料庫中取出來的 String 字串轉換成 ProductCategory enum
+        product.setCategory(ProductCategory.valueOf(resultSet.getString("category")));
+
         product.setImageUrl(resultSet.getString("image_url"));
         product.setPrice(resultSet.getInt("price"));
         product.setStock(resultSet.getInt("stock"));
