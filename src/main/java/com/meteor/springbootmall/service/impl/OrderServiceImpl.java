@@ -4,6 +4,7 @@ import com.meteor.springbootmall.dao.OrderDao;
 import com.meteor.springbootmall.dao.ProductDao;
 import com.meteor.springbootmall.dto.BuyItem;
 import com.meteor.springbootmall.dto.CreateOrderRequest;
+import com.meteor.springbootmall.model.Order;
 import com.meteor.springbootmall.model.OrderItem;
 import com.meteor.springbootmall.model.Product;
 import com.meteor.springbootmall.service.OrderService;
@@ -21,6 +22,17 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private ProductDao productDao;
+
+    @Override
+    public Order getOrderById(Integer orderId) {
+        Order order = orderDao.getOrderById(orderId);
+
+        List<OrderItem> orderItemList = orderDao.getOrderItemsByOrderId(orderId);
+
+        order.setOrderItemList(orderItemList);
+
+        return order;
+    }
 
     @Override
     public Integer createOrder(Integer userId, CreateOrderRequest createOrderRequest) {
