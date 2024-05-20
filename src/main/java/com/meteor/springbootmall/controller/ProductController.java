@@ -1,6 +1,7 @@
 package com.meteor.springbootmall.controller;
 
 import com.meteor.springbootmall.constant.ProductCategory;
+import com.meteor.springbootmall.dto.ProductQueryParams;
 import com.meteor.springbootmall.dto.ProductRequest;
 import com.meteor.springbootmall.model.Product;
 import com.meteor.springbootmall.service.ProductService;
@@ -31,7 +32,11 @@ public class ProductController {
             @RequestParam(required = false) ProductCategory category,
             @RequestParam(required = false) String search
     ) {
-        List<Product> productList = productService.getProducts(category, search);
+        ProductQueryParams productQueryParams = new ProductQueryParams();
+        productQueryParams.setCategory(category);
+        productQueryParams.setSearch(search);
+
+        List<Product> productList = productService.getProducts(productQueryParams);
 
         return ResponseEntity.status(HttpStatus.OK).body(productList);
     }
