@@ -13,8 +13,8 @@ public class Product {
     private Integer price;
     private Integer stock;
     private String description;
-    private Date createdTime;
-    private Date lastModifiedTime;
+    private Date createdDate;
+    private Date lastModifiedDate;
 
     public Integer getProductId() {
         return productId;
@@ -72,19 +72,19 @@ public class Product {
         this.description = description;
     }
 
-    public Date getCreatedTime() {
-        return createdTime;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreatedTime(Date createdTime) {
-        this.createdTime = createdTime;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public Date getLastModifiedTime() {
-        return lastModifiedTime;
+    public Date getLastModifiedDate() {
+        return lastModifiedDate;
     }
 
-    public void setLastModifiedTime(Date lastModifiedTime) {
-        this.lastModifiedTime = lastModifiedTime;
+    public void setLastModifiedDate(Date lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
     }
 }
